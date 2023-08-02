@@ -18,7 +18,7 @@ class WeatherDataModel extends WeatherData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dateTime': dateTime,
+      'dt': dateTime,
       'sunrise': sunrise,
       'sunset': sunset,
       'temp': temp,
@@ -34,16 +34,16 @@ class WeatherDataModel extends WeatherData {
 
   factory WeatherDataModel.fromMap(Map<String, dynamic> map) {
     return WeatherDataModel(
-      dateTime: map['dateTime'] as int,
+      dateTime: map['dt'] as int,
       sunrise: map['sunrise'] as int,
       sunset: map['sunset'] as int,
       temp: map['temp'] as double,
-      feelsLike: map['feelsLike'] as double,
+      feelsLike: map['feels_like'] as double,
       pressure: map['pressure'] as int,
       humidity: map['humidity'] as int,
-      windSpeed: map['windSpeed'] as double,
+      windSpeed: map['wind_speed'] as double,
       weatherDescriptionList: List<WeatherDescriptionModel>.from(
-        (map['weather'] as List<int>).map<WeatherDescriptionModel>(
+        (map['weather'] as List<dynamic>).map<WeatherDescriptionModel>(
           (object) {
             return WeatherDescriptionModel.fromMap(
               object as Map<String, dynamic>,

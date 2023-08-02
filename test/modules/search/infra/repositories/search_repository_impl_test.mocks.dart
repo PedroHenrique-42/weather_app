@@ -8,7 +8,7 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:weather_app/modules/search/domain/entities/weather_description.dart'
     as _i5;
-import 'package:weather_app/modules/search/infra/datasources/search_datasource.dart'
+import 'package:weather_app/modules/search/infra/datasources/weather_datasource.dart'
     as _i2;
 import 'package:weather_app/modules/search/infra/models/weather_data_model.dart'
     as _i4;
@@ -24,10 +24,10 @@ import 'package:weather_app/modules/search/infra/models/weather_data_model.dart'
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [SearchDataSource].
+/// A class which mocks [WeatherDatasource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSearchDataSource extends _i1.Mock implements _i2.SearchDataSource {
+class MockWeatherDatasource extends _i1.Mock implements _i2.WeatherDatasource {
   @override
   _i3.Future<_i4.WeatherDataModel?> getWeatherData({
     required String? lat,
