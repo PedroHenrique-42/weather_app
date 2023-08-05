@@ -17,9 +17,7 @@ void main() {
 
   test("Should return a WeatherDataModel", () {
     when(
-      dio.get(
-        "https://api.openweathermap.org/data/3.0/onecall?lat=123&lon=321&appid=367f9277611c3063a6bc21469f096615",
-      ),
+      dio.get(any),
     ).thenAnswer(
       (realInvocation) async => Response(
         requestOptions: RequestOptions(),
@@ -34,9 +32,7 @@ void main() {
 
   test("Should return a DataSourceError if status code is not 200", () {
     when(
-      dio.get(
-        "https://api.openweathermap.org/data/3.0/onecall?lat=123&lon=321&appid=367f9277611c3063a6bc21469f096615",
-      ),
+      dio.get(any),
     ).thenAnswer(
       (realInvocation) async => Response(
         requestOptions: RequestOptions(),

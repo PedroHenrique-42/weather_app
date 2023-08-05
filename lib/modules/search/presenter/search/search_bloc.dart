@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:weather_app/modules/search/domain/usecases/search_by_lat_long.dart';
-import 'package:weather_app/modules/search/presenter/search/states/state.dart';
+import 'package:weather_app/modules/search/presenter/search/states/states.dart';
 
 class SearchBloc extends Bloc<LatLng, SearchState> {
   final SearchByLatLong useCase;
