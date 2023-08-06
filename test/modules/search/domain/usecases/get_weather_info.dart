@@ -4,16 +4,16 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:weather_app/modules/search/domain/entities/weather_data.dart';
 import 'package:weather_app/modules/search/domain/errors/errors.dart';
-import 'package:weather_app/modules/search/domain/repositories/search_repository.dart';
-import 'package:weather_app/modules/search/domain/usecases/search_by_lat_long.dart';
+import 'package:weather_app/modules/search/domain/repositories/get_weather_info_repository.dart';
+import 'package:weather_app/modules/search/domain/usecases/get_weather_info.dart';
 
-import 'search_by_lat_long_test.mocks.dart';
+import 'get_weather_info.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<SearchRepository>()])
+@GenerateNiceMocks([MockSpec<GetWeatherInfoRepository>()])
 @GenerateNiceMocks([MockSpec<WeatherData>()])
 void main() {
-  final repository = MockSearchRepository();
-  final useCase = SearchByLatLongImpl(repository);
+  final repository = MockGetWeatherInfoRepository();
+  final useCase = GetWeatherInfoImpl(repository);
 
   test('Should return a WeatherData', () async {
     when(repository.search(lat: "123", long: "321"))

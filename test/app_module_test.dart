@@ -8,7 +8,7 @@ import 'package:mockito/mockito.dart';
 import 'package:modular_test/modular_test.dart';
 import 'package:weather_app/app_module.dart';
 import 'package:weather_app/modules/search/domain/entities/weather_data.dart';
-import 'package:weather_app/modules/search/domain/usecases/search_by_lat_long.dart';
+import 'package:weather_app/modules/search/domain/usecases/get_weather_info.dart';
 import 'package:weather_app/modules/search/utils/open_weather_response.dart';
 
 import 'app_module_test.mocks.dart';
@@ -21,9 +21,9 @@ void main() {
   ]);
 
   test("Should retrieve the use case without error", () {
-    final useCase = Modular.get<SearchByLatLong>();
+    final useCase = Modular.get<GetWeatherInfo>();
 
-    expect(useCase, isA<SearchByLatLong>());
+    expect(useCase, isA<GetWeatherInfo>());
   });
 
   test("Should return a WeatherData", () async {
@@ -37,7 +37,7 @@ void main() {
       );
     });
 
-    final useCase = Modular.get<SearchByLatLong>();
+    final useCase = Modular.get<GetWeatherInfo>();
 
     final result = await useCase(lat: "123", long: "321");
 

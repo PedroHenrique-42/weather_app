@@ -4,18 +4,19 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:weather_app/modules/search/domain/entities/weather_data.dart';
 import 'package:weather_app/modules/search/domain/errors/errors.dart';
-import 'package:weather_app/modules/search/domain/repositories/search_repository.dart';
+import 'package:weather_app/modules/search/domain/repositories/get_weather_info_repository.dart';
 import 'package:weather_app/modules/search/infra/datasources/weather_datasource.dart';
 import 'package:weather_app/modules/search/infra/models/weather_data_model.dart';
-import 'package:weather_app/modules/search/infra/repositories/search_repository_impl.dart';
+import 'package:weather_app/modules/search/infra/repositories/get_weather_info_repository_impl.dart';
 
-import 'search_repository_impl_test.mocks.dart';
+import 'get_weather_info_repository_impl_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<WeatherDatasource>()])
 @GenerateNiceMocks([MockSpec<WeatherDataModel>()])
 void main() {
   final WeatherDatasource dataSource = MockWeatherDatasource();
-  final SearchRepository repository = SearchRepositoryImpl(dataSource);
+  final GetWeatherInfoRepository repository =
+      GetWeatherInfoRepositoryImpl(dataSource);
 
   test('Should return a WeatherData', () async {
     when(dataSource.getWeatherData(lat: "123", long: "321"))

@@ -6,14 +6,14 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:weather_app/modules/search/domain/entities/weather_data.dart';
 import 'package:weather_app/modules/search/domain/errors/errors.dart';
-import 'package:weather_app/modules/search/domain/usecases/search_by_lat_long.dart';
-import 'package:weather_app/modules/search/presenter/search/search_bloc.dart';
-import 'package:weather_app/modules/search/presenter/search/states/states.dart';
+import 'package:weather_app/modules/search/domain/usecases/get_weather_info.dart';
+import 'package:weather_app/modules/search/presenter/search/weather_info_bloc/weather_info_bloc.dart';
+import 'package:weather_app/modules/search/presenter/search/weather_info_bloc/states/weather_info_states.dart';
 
 import 'search_bloc_test.mocks.dart';
 
 @GenerateNiceMocks([
-  MockSpec<SearchByLatLong>(),
+  MockSpec<GetWeatherInfo>(),
   MockSpec<WeatherData>(),
 ])
 void main() {
@@ -29,8 +29,8 @@ void main() {
     build: () => SearchBloc(useCase),
     act: (bloc) => bloc.add(const LatLng(12.3, 32.1)),
     expect: () => [
-      isA<SearchLoading>(),
-      isA<SearchSuccess>(),
+      isA<WeatherInfoLoading>(),
+      isA<WeatherInfoSucess>(),
     ],
   );
 
@@ -44,8 +44,8 @@ void main() {
     build: () => SearchBloc(useCase),
     act: (bloc) => bloc.add(const LatLng(12.3, 32.1)),
     expect: () => [
-      isA<SearchLoading>(),
-      isA<SearchError>(),
+      isA<WeatherInfoLoading>(),
+      isA<WeatherInfoError>(),
     ],
   );
 }

@@ -1,19 +1,19 @@
 import 'package:weather_app/modules/search/domain/entities/weather_data.dart';
 import 'package:dartz/dartz.dart';
 import 'package:weather_app/modules/search/domain/errors/errors.dart';
-import 'package:weather_app/modules/search/domain/repositories/search_repository.dart';
+import 'package:weather_app/modules/search/domain/repositories/get_weather_info_repository.dart';
 
-abstract class SearchByLatLong {
+abstract class GetWeatherInfo {
   Future<Either<SearchFailure, WeatherData?>> call({
     required String lat,
     required String long,
   });
 }
 
-class SearchByLatLongImpl implements SearchByLatLong {
-  final SearchRepository _searchRepository;
+class GetWeatherInfoImpl implements GetWeatherInfo {
+  final GetWeatherInfoRepository _searchRepository;
 
-  SearchByLatLongImpl(this._searchRepository);
+  GetWeatherInfoImpl(this._searchRepository);
 
   @override
   Future<Either<SearchFailure, WeatherData?>> call({

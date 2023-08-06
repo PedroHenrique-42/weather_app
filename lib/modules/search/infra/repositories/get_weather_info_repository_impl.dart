@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:weather_app/modules/search/domain/entities/weather_data.dart';
 import 'package:weather_app/modules/search/domain/errors/errors.dart';
-import 'package:weather_app/modules/search/domain/repositories/search_repository.dart';
+import 'package:weather_app/modules/search/domain/repositories/get_weather_info_repository.dart';
 import 'package:weather_app/modules/search/infra/datasources/weather_datasource.dart';
 
-class SearchRepositoryImpl implements SearchRepository {
+class GetWeatherInfoRepositoryImpl implements GetWeatherInfoRepository {
   final WeatherDatasource datasource;
 
-  SearchRepositoryImpl(this.datasource);
+  GetWeatherInfoRepositoryImpl(this.datasource);
 
   @override
   Future<Either<SearchFailure, WeatherData?>> search({
