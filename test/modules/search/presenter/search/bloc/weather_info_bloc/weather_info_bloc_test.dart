@@ -7,17 +7,17 @@ import 'package:mockito/mockito.dart';
 import 'package:weather_app/modules/search/domain/entities/weather_data.dart';
 import 'package:weather_app/modules/search/domain/errors/errors.dart';
 import 'package:weather_app/modules/search/domain/usecases/get_weather_info.dart';
-import 'package:weather_app/modules/search/presenter/search/weather_info_bloc/weather_info_bloc.dart';
-import 'package:weather_app/modules/search/presenter/search/weather_info_bloc/states/weather_info_states.dart';
+import 'package:weather_app/modules/search/presenter/search/bloc/weather_info_bloc/weather_info_bloc.dart';
+import 'package:weather_app/modules/search/presenter/search/bloc/weather_info_bloc/states/weather_info_states.dart';
 
-import 'search_bloc_test.mocks.dart';
+import 'weather_info_bloc_test.mocks.dart';
 
 @GenerateNiceMocks([
   MockSpec<GetWeatherInfo>(),
   MockSpec<WeatherData>(),
 ])
 void main() {
-  final useCase = MockSearchByLatLong();
+  final useCase = MockGetWeatherInfo();
 
   blocTest(
     "Should return states in right order",
@@ -26,7 +26,7 @@ void main() {
         (realInvocation) async => Right(MockWeatherData()),
       );
     },
-    build: () => SearchBloc(useCase),
+    build: () => WeatherInfoBloc(useCase),
     act: (bloc) => bloc.add(const LatLng(12.3, 32.1)),
     expect: () => [
       isA<WeatherInfoLoading>(),
@@ -41,7 +41,7 @@ void main() {
         (realInvocation) async => Left(InvalidTextError()),
       );
     },
-    build: () => SearchBloc(useCase),
+    build: () => WeatherInfoBloc(useCase),
     act: (bloc) => bloc.add(const LatLng(12.3, 32.1)),
     expect: () => [
       isA<WeatherInfoLoading>(),

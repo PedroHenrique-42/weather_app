@@ -27,7 +27,7 @@ class OpenWeatherDatasource implements WeatherDatasource {
 
   String formatOpenWeatherURL(String lat, String long) {
     String baseURL =
-        "https://api.openweathermap.org/data/3.0/onecall?units=metric&lat={lat}&lon={long}&appid=367f9277611c3063a6bc21469f096615";
+        "https://api.openweathermap.org/data/3.0/onecall?lang=pt_br&units=metric&lat={lat}&lon={long}&appid=367f9277611c3063a6bc21469f096615";
     late String formattedPath =
         baseURL.replaceFirst("{lat}", lat).replaceFirst("{long}", long);
 

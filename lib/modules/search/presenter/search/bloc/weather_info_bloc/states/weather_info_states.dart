@@ -1,6 +1,6 @@
 import 'package:weather_app/modules/search/domain/entities/weather_data.dart';
 
-import '../../../../domain/errors/errors.dart';
+import '../../../../../domain/errors/errors.dart';
 
 abstract class WeatherInfoState {}
 

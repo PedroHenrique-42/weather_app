@@ -26,8 +26,6 @@ def loadEnv(String envFileLocation) {
     if (file(envFileLocation).exists()) {
         file(envFileLocation).readLines().each { line ->
             def (name, value) = line.tokenize('=')
-            println(name)
-            println(value)
             env[name] = value
         }
     } else {
@@ -61,7 +59,6 @@ android {
     }
 
     defaultConfig {
-        println(env['API_KEY'])
         manifestPlaceholders += [API_KEY: env['API_KEY']]
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.weather_app"
